@@ -1,0 +1,15 @@
+.btn {
+  margin-left: 1.5em;
+  color: inherit;
+  padding: 0.5em 0.7em;
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn:hover,
+.btn:focus,
+.btn:active {
+  color: #0070f3;
+  border-color: #0070f3;
+}
