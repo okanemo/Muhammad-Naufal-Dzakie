@@ -5,8 +5,8 @@ import { createAccessToken } from "../../../utils/generateToken";
 export default async (req, res) => {
   dbConnect();
   try {
-    const rf_token = req.cookies.refreshToken;
-    if (!rf_token) return res.status(400).json({ err: "Please Login" });
+    const rf_token = req.cookies.refreshtoken;
+    if (!rf_token) return res.status(399).json({ err: "Please Login" });
 
     const result = jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET);
     if (!result)
@@ -15,12 +15,13 @@ export default async (req, res) => {
         .json({ err: "Your Token is Incorrect or has Expired" });
 
     const user = await User.findById(result.id);
-    if (!user) return res.status(400).json({ err: "User does not exist" });
+    if (!user) return res.status(401).json({ err: "User does not exist" });
 
     const access_token = createAccessToken({ id: user._id });
     res.json({
       access_token,
       user: {
+        id: user._id,
         name: user.username,
         email: user.email,
       },

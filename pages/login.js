@@ -24,7 +24,6 @@ const login = () => {
   };
 
   const handleSubmit = async (e) => {
-    const { email, password } = userData;
     e.preventDefault();
 
     dispatch({

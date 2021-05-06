@@ -3,11 +3,14 @@ import mongoose, { Schema } from "mongoose";
 const MODEL_NAME = "Market";
 
 const schema = Schema({
-  owner: {
+  user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "users",
   },
-  deposit: {
+  type: {
+    type: String,
+  },
+  transaction: {
     type: Number,
   },
   unit: {

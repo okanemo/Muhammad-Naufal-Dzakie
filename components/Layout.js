@@ -3,7 +3,7 @@ import styles from "../styles/Home.module.css";
 import Head from "next/head";
 import Nav from "../components/Nav";
 import Header from "../components/Header";
-import Notify from "../components/Notify";
+// import Notify from "../components/Notify";
 const Layout = ({ children }) => {
   return (
     <>
@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
 
       <div className={styles.container}>
         <main className={styles.main}>
-          <Notify />
+          {/* <Notify /> */}
           <Header />
           {children}
         </main>

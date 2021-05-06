@@ -24,12 +24,11 @@ const Nav = () => {
         <li>
           <Link href="/">Home</Link>
         </li>
-        <li>
-          <Link href="/market">Market</Link>
-        </li>
-        <li>
-          <Link href="/portfolio">Portfolio</Link>
-        </li>
+        {Object.keys(auth).length !== 0 && (
+          <li>
+            <Link href="/portfolio">Portfolio</Link>
+          </li>
+        )}
         <li>
           {Object.keys(auth).length === 0 ? (
             <Link href="/login">Sign In</Link>

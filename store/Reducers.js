@@ -12,6 +12,16 @@ const reducers = (state, action) => {
         ...state,
         auth: action.payload,
       };
+    case ACTIONS.BUY:
+      return {
+        ...state,
+        auth: action.payload,
+      };
+    case ACTIONS.SELL:
+      return {
+        ...state,
+        auth: action.payload,
+      };
     default:
       return state;
   }

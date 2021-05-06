@@ -1,29 +1,43 @@
 import Head from "next/head";
+import Info from "../../components/Info";
+import Invest from "../../components/Invest";
+import Withdraw from "../../components/Withdraw";
+import styles from "../../styles/Portfolio.module.css";
 
-const Portfolio = ({ portfolio }) => {
+import React, { useContext, useEffect } from "react";
+import { useRouter } from "next/router";
+import { DataContext } from "../../store/GlobalState";
+
+const Portfolio = () => {
+  const { state, dispatch } = useContext(DataContext);
+  const router = useRouter();
+  const { auth } = state;
+
+  useEffect(() => {
+    if (Object.keys(auth).length === 0) router.push("/");
+  }, [auth]);
+
   return (
     <>
-      <ul>
-        <li>
-          <div>Portfolio 1</div>
-        </li>
-        <li>
-          <div>Portfolio 2</div>
-        </li>
-        <li>
-          <div>Portfolio 3</div>
-        </li>
-      </ul>
+      <div className={styles.grid}>
+        <Info />
+        <div className={styles.card}>
+          <Invest />
+        </div>
+        <div className={styles.card}>
+          <Withdraw />
+        </div>
+      </div>
     </>
   );
 };
 
 export default Portfolio;
 
-export function getServerSideProps(context) {
-  return {
-    props: {
-      portfolio: [],
-    },
-  };
-}
+// export function getServerSideProps(context) {
+//   return {
+//     props: {
+//       portfolio: [],
+//     },
+//   };
+// }
